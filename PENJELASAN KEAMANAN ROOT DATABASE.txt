@@ -1,0 +1,21 @@
+1. TAHAP MISKONFIGURASI (SISI KORBAN)
+--------------------------------------
+Admin melemahkan keamanan demi kenyamanan akses:
+
+* BYPASS UNIX SOCKET:
+  ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password;
+  (Mematikan verifikasi user OS; MariaDB beralih ke password).
+
+* BLANK PASSWORD:
+  SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');
+  (Menghapus kata sandi; pintu akses terbuka tanpa kunci).
+
+* APPLY CHANGES:
+  FLUSH PRIVILEGES;
+
+--------------------------------------
+2. CATATAN TAMBAHAN
+--------------------------------------
+- "Unix Socket" menggunakan login "root" OS kali Linux sebagai izin mengakses "root" lainnya pada MySQL/MariaDB 
+- "mysql_native_password" cara lain sebuah keamanan setiap akun database hanya bisa di akses penulisan password biasa
+==============================================================
